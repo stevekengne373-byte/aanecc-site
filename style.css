@@ -1,0 +1,666 @@
+/* =========================================================================
+   AANECC — Design tokens
+   Palette tirée du drapeau camerounais + bleu de l'écusson de Compiègne.
+   Display : Fraunces (chaleureux, avec du caractère)
+   Corps   : Work Sans
+   Utilitaire / "tampon administratif" : Space Mono
+   Signature : le tampon circulaire — clin d'oeil aux visas, récépissés et
+   cachets qui rythment la vie administrative des étudiants internationaux.
+   ========================================================================= */
+
+:root {
+  --cream: #FBF6EC;
+  --paper: #FFFFFF;
+  --ink: #1E1A14;
+  --ink-soft: #55503F;
+
+  --green: #00723D;
+  --green-deep: #01502B;
+  --red: #C81E2C;
+  --gold: #E3B428;
+  --gold-deep: #9C7712;
+  --blue: #1F3B5C;
+
+  --line: rgba(30, 26, 20, 0.14);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body: "Work Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+
+  --radius: 18px;
+  --shadow-card: 0 14px 34px -20px rgba(30, 26, 20, 0.35);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+a { color: inherit; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
+
+/* Tricolor rule pinned at the very top of the page */
+.flag-rule {
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--green) 0 33.33%, var(--gold) 33.33% 66.66%, var(--red) 66.66% 100%);
+}
+
+/* -------------------------------------------------------------------------
+   Header / Nav
+   ------------------------------------------------------------------------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(251, 246, 236, 0.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-nav { padding: 0.9rem 0; }
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--ink);
+}
+
+.brand-logo { height: 42px; width: auto; display: block; }
+.brand-logo--footer { height: 34px; }
+
+.main-nav-list { gap: 0.4rem; align-items: center; }
+
+.main-nav-list .nav-link {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.96rem;
+  color: var(--ink-soft);
+  padding: 0.5rem 0.9rem !important;
+  border-radius: 999px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.main-nav-list .nav-link:hover { color: var(--ink); background: rgba(30,26,20,0.05); }
+.main-nav-list .nav-link.active { color: var(--paper); background: var(--green); }
+
+.main-nav-list .nav-link--cta {
+  border: 1.4px solid var(--ink);
+  color: var(--ink) !important;
+  font-weight: 600;
+}
+.main-nav-list .nav-link--cta:hover { background: var(--ink); color: var(--cream) !important; }
+
+/* -------------------------------------------------------------------------
+   Buttons ("stamp" style — solid ink border, no soft drop shadows)
+   ------------------------------------------------------------------------- */
+.btn-stamp-primary,
+.btn-stamp-outline {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1.6px solid var(--ink);
+  transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn-stamp-primary {
+  background: var(--ink);
+  color: var(--cream) !important;
+}
+.btn-stamp-primary:hover { background: var(--green-deep); border-color: var(--green-deep); transform: translateY(-1px); }
+
+.btn-stamp-outline {
+  background: transparent;
+  color: var(--ink) !important;
+}
+.btn-stamp-outline:hover { background: var(--ink); color: var(--cream) !important; transform: translateY(-1px); }
+
+.btn-sm-stamp { padding: 0.6rem 1.2rem; font-size: 0.88rem; }
+
+/* -------------------------------------------------------------------------
+   Typography helpers
+   ------------------------------------------------------------------------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.74rem;
+  color: var(--gold-deep);
+  margin-bottom: 0.9rem;
+}
+
+.section-title, .page-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.page-title { font-size: clamp(2.1rem, 4vw, 2.9rem); margin-bottom: 0.9rem; }
+.section-title { font-size: clamp(1.6rem, 3vw, 2.1rem); margin-bottom: 0; }
+.page-lede { font-size: 1.12rem; color: var(--ink-soft); max-width: 42rem; }
+
+/* -------------------------------------------------------------------------
+   Hero
+   ------------------------------------------------------------------------- */
+.hero { padding: 4.5rem 0 3.5rem; }
+
+.hero-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(2.6rem, 5.4vw, 4rem);
+  line-height: 1.05;
+  margin-bottom: 1.4rem;
+}
+
+.gradient-word {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(100deg, var(--green) 0%, var(--gold-deep) 46%, var(--red) 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-lede {
+  font-size: 1.14rem;
+  color: var(--ink-soft);
+  max-width: 34rem;
+  margin-bottom: 2rem;
+}
+
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+
+.hero-tags {
+  list-style: none;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
+.hero-tags li {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+}
+
+/* Stamp composition (signature element) */
+.stamp-composition {
+  position: relative;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.stamp-svg { width: 100%; height: auto; animation: stamp-spin 60s linear infinite; transform-origin: 50% 50%; }
+@keyframes stamp-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.stamp-ring-outer { fill: none; stroke: var(--ink); stroke-width: 1.4; opacity: 0.35; }
+.stamp-ring-inner { fill: none; stroke: var(--ink); stroke-width: 1; stroke-dasharray: 1 5; opacity: 0.5; }
+
+.stamp-arc-text {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  fill: var(--ink-soft);
+}
+
+.stamp-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46%;
+  height: auto;
+  filter: drop-shadow(0 6px 14px rgba(30,26,20,0.18));
+}
+
+.stamp-badge {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  border: 2.4px solid var(--red);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  font-family: var(--font-mono);
+  transform: rotate(-8deg);
+  background: var(--paper);
+  flex-shrink: 0;
+}
+.stamp-badge-line1 { font-size: 1.5rem; font-weight: 700; line-height: 1; }
+.stamp-badge-line2 { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.15rem; }
+
+.stamp-badge--float {
+  position: absolute;
+  bottom: -6px;
+  right: 6%;
+  transform: rotate(10deg);
+  box-shadow: var(--shadow-card);
+}
+
+.stamp-badge--inline {
+  display: inline-flex;
+  width: 68px;
+  height: 68px;
+  float: right;
+}
+.stamp-badge--404 { margin: 0 auto 1.6rem; }
+
+/* -------------------------------------------------------------------------
+   Sections (shared)
+   ------------------------------------------------------------------------- */
+.section { padding: 3.6rem 0; }
+.section--activites-preview { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.2rem;
+  flex-wrap: wrap;
+}
+
+.link-more {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--green-deep);
+  border-bottom: 1px solid var(--green-deep);
+  padding-bottom: 2px;
+  white-space: nowrap;
+}
+.link-more:hover { color: var(--red); border-color: var(--red); }
+
+.page-hero { padding: 3.2rem 0 1rem; }
+.page-hero--404 { padding: 5rem 0; }
+
+/* -------------------------------------------------------------------------
+   Event cards
+   ------------------------------------------------------------------------- */
+.card-event {
+  display: flex;
+  gap: 1.1rem;
+  align-items: flex-start;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  height: 100%;
+}
+.card-event-body { width: 100%; }
+.card-event--tall { height: 100%; }
+
+/* Category "stamp" chip — a small rectangular ink-stamp, not a date */
+.category-stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1.3px solid;
+  border-radius: 5px;
+  padding: 0.22rem 0.6rem;
+  transform: rotate(-1.6deg);
+  margin-bottom: 0.9rem;
+}
+.category-stamp.cat-green { color: var(--green-deep); border-color: var(--green); }
+.category-stamp.cat-red { color: var(--red); border-color: var(--red); }
+.category-stamp.cat-gold { color: var(--gold-deep); border-color: var(--gold); }
+
+.card-event-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.18rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.card-event-excerpt { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 0; }
+
+/* -------------------------------------------------------------------------
+   Guide cards
+   ------------------------------------------------------------------------- */
+.card-guide {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.card-guide:hover { transform: translateY(-3px); box-shadow: var(--shadow-card); border-color: var(--green); }
+
+.card-guide-fiche {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  color: var(--gold-deep);
+  margin-bottom: 0.7rem;
+}
+.card-guide-title { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; margin-bottom: 0.6rem; }
+.card-guide-excerpt { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1rem; flex-grow: 1; }
+.card-guide-link { font-family: var(--font-mono); font-size: 0.82rem; color: var(--green-deep); }
+.card-guide--grid { min-height: 100%; }
+
+/* -------------------------------------------------------------------------
+   Mission section
+   ------------------------------------------------------------------------- */
+.section--mission { background: var(--ink); color: var(--cream); }
+.section--mission .eyebrow { color: var(--gold); }
+
+.mission-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  line-height: 1.4;
+  border-left: 3px solid var(--gold);
+  padding-left: 1.4rem;
+  margin: 0;
+}
+
+.mission-card {
+  background: rgba(251, 246, 236, 0.06);
+  border: 1px solid rgba(251, 246, 236, 0.18);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+}
+.mission-card p { color: rgba(251, 246, 236, 0.82); margin-bottom: 1.2rem; }
+.section--mission .btn-stamp-outline { border-color: var(--cream); color: var(--cream) !important; }
+.section--mission .btn-stamp-outline:hover { background: var(--cream); color: var(--ink) !important; }
+
+/* -------------------------------------------------------------------------
+   Missions statutaires (association page — Article premier)
+   ------------------------------------------------------------------------- */
+.missions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+.mission-item {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--line);
+}
+.mission-index {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--gold-deep);
+  flex-shrink: 0;
+  padding-top: 0.15rem;
+}
+.mission-item p { margin: 0; color: var(--ink-soft); font-size: 1rem; max-width: 42rem; }
+
+/* -------------------------------------------------------------------------
+   Agenda page
+   ------------------------------------------------------------------------- */
+.filter-bar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.2rem; }
+
+.filter-chip {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.filter-chip:hover { border-color: var(--green); }
+.filter-chip.is-active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+.empty-state { color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.92rem; padding: 2rem 0; }
+
+/* -------------------------------------------------------------------------
+   Form banner (newcomer form / WhatsApp CTA)
+   ------------------------------------------------------------------------- */
+.section--form-banner { padding: 0 0 3.6rem; }
+.form-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2.2rem 2.4rem;
+}
+.form-banner-text { color: var(--ink-soft); margin: 0; max-width: 34rem; }
+
+/* -------------------------------------------------------------------------
+   Legal / existence section
+   ------------------------------------------------------------------------- */
+.legal-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.8rem 2rem;
+}
+.legal-list { margin: 0; display: flex; flex-direction: column; gap: 1.1rem; }
+.legal-list dt {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gold-deep);
+  margin-bottom: 0.25rem;
+}
+.legal-list dd { margin: 0; color: var(--ink); font-size: 0.98rem; }
+
+.legal-docs {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--line);
+}
+.doc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: 1.4px solid var(--ink);
+  border-radius: 999px;
+  padding: 0.5rem 1rem 0.5rem 0.6rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.doc-link:hover { background: var(--ink); color: var(--cream); }
+.doc-link:hover .doc-link-label { color: var(--cream); border-color: var(--cream); }
+.doc-link-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+}
+.doc-link-title { font-size: 0.92rem; font-weight: 500; }
+
+/* -------------------------------------------------------------------------
+   Bureau roster
+   ------------------------------------------------------------------------- */
+.bureau-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.6rem;
+}
+.bureau-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+}
+.bureau-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+.bureau-role { font-family: var(--font-display); font-weight: 600; font-size: 1.05rem; }
+.bureau-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--green-deep);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+.bureau-mission { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 0.8rem; }
+.bureau-actions {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.bureau-actions li { color: var(--ink-soft); font-size: 0.86rem; }
+
+/* -------------------------------------------------------------------------
+   Article page
+   ------------------------------------------------------------------------- */
+.article-hero { padding: 2.6rem 0 1rem; position: relative; }
+.back-link {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  display: inline-block;
+  margin-bottom: 1.4rem;
+}
+.back-link:hover { color: var(--green-deep); }
+
+.sommaire {
+  position: sticky;
+  top: 6.5rem;
+  border-left: 2px solid var(--line);
+  padding-left: 1.2rem;
+}
+.sommaire-title {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.74rem;
+  color: var(--gold-deep);
+  margin-bottom: 0.9rem;
+}
+.sommaire-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.sommaire-list a { font-size: 0.92rem; color: var(--ink-soft); }
+.sommaire-list a:hover { color: var(--ink); }
+.sommaire-list li.is-active a { color: var(--green-deep); font-weight: 600; }
+
+.article-content h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin: 2.2rem 0 0.9rem;
+}
+.article-content h2:first-child { margin-top: 0; }
+.article-content p { color: var(--ink-soft); margin-bottom: 1rem; font-size: 1.02rem; }
+
+.article-pagination {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.pagination-link { max-width: 45%; }
+.pagination-link--next { text-align: right; margin-left: auto; }
+.pagination-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--gold-deep);
+  margin-bottom: 0.3rem;
+}
+.pagination-title { font-family: var(--font-display); font-weight: 600; color: var(--ink); }
+.pagination-link:hover .pagination-title { color: var(--green-deep); }
+
+/* -------------------------------------------------------------------------
+   Footer
+   ------------------------------------------------------------------------- */
+.site-footer { background: var(--ink); color: var(--cream); padding: 3.6rem 0 1.6rem; margin-top: 2rem; }
+.footer-brand { color: var(--cream); margin-bottom: 0.9rem; }
+.footer-brand .brand-mark { color: var(--gold); }
+.footer-brand .brand-mark-text { fill: var(--cream); }
+.footer-tagline { color: rgba(251,246,236,0.65); font-size: 0.94rem; max-width: 22rem; }
+
+.footer-heading {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 0.9rem;
+}
+.footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
+.footer-links a { color: rgba(251,246,236,0.78); font-size: 0.94rem; }
+.footer-links a:hover { color: var(--cream); }
+
+.footer-bottom {
+  margin-top: 2.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(251,246,236,0.16);
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.82rem;
+  color: rgba(251,246,236,0.55);
+}
+.footer-motto { font-style: italic; max-width: 30rem; }
+
+.footer-credit {
+  margin-top: 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: rgba(251,246,236,0.38);
+}
+
+/* -------------------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------------------- */
+@media (max-width: 991.98px) {
+  .sommaire { position: static; border-left: none; padding-left: 0; margin-bottom: 2rem; }
+  .sommaire-list { flex-direction: row; flex-wrap: wrap; gap: 0.6rem 1.2rem; }
+  .stamp-badge--inline { float: none; margin-bottom: 1rem; }
+}
+
+@media (max-width: 575.98px) {
+  .hero { padding: 3rem 0 2rem; }
+  .article-pagination { flex-direction: column; }
+  .pagination-link, .pagination-link--next { max-width: 100%; text-align: left; margin-left: 0; }
+}
