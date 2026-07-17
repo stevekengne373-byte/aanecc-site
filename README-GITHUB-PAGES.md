@@ -1,21 +1,57 @@
-# Mettre le site en ligne avec GitHub Pages (gratuit, permanent)
+# AANECC - Site Web
 
-1. Va sur https://github.com/new et crée un nouveau dépôt (par exemple `aanecc-site`), en **Public**. Ne coche aucune case d'initialisation (pas de README, pas de .gitignore).
+Site officiel de l'**AANECC** (Association des Anciens & Nouveaux Étudiants Camerounais de Compiègne).
 
-2. Une fois le dépôt créé, clique sur **"uploading an existing file"** (lien affiché sur la page vide du dépôt).
+## À propos
 
-3. Dézippe `aanecc-site-static.zip` sur ton ordinateur, puis glisse **tout le contenu du dossier** (pas le dossier lui-même : `index.html`, `activites/`, `guides/`, `association/`, `static/`, `.nojekyll`) dans la zone d'upload de GitHub.
+Ce site a pour but d'accompagner les étudiants camerounais arrivant à Compiègne : démarches administratives, logement, bons plans, entraide et vie associative.
 
-4. Valide le commit ("Commit changes").
+## Structure du projet
 
-5. Va dans l'onglet **Settings** du dépôt → section **Pages** (dans le menu de gauche) → sous "Build and deployment", choisis **Source : Deploy from a branch**, branche **main**, dossier **/ (root)** → **Save**.
+```
+aanecc-site/
+├── index.html                  # Page d'accueil
+├── activites/                  # Page des activités de l'association
+├── association/                # Page de présentation de l'association
+├── guides/                     # Guides pratiques pour les nouveaux étudiants
+│   ├── mot-de-bienvenue/
+│   ├── mes-premiers-pas/
+│   ├── demarches-administratives/
+│   ├── bons-plans-logement/
+│   ├── bons-plans-repas/
+│   ├── bons-plans-equipements/
+│   ├── bon-plan-transport/
+│   └── jobs-etudiants-et-liens-utiles/
+├── static/
+│   ├── css/                    # Feuilles de style
+│   ├── js/                     # Scripts JavaScript
+│   ├── img/                    # Images et logo
+│   └── docs/                   # Documents (statuts, règlement intérieur)
+└── .nojekyll                   # Désactive le traitement Jekyll sur GitHub Pages
+```
 
-6. Patiente 1 à 2 minutes, puis rafraîchis la page Settings > Pages : ton lien apparaît en haut, du type :
-   `https://TON-PSEUDO.github.io/aanecc-site/`
+## Déploiement
 
-Ce lien est permanent (contrairement à Netlify Drop) et se met à jour à chaque fois que tu modifies un fichier sur GitHub.
+Ce site est hébergé via **GitHub Pages**, à partir de la branche `main`.
 
-## Mettre à jour le site plus tard
+🔗 Lien du site : https://stevekengne373-byte.github.io/aanecc-site/
 
-- Directement sur GitHub : ouvre le fichier à modifier dans le dépôt, clique sur l'icône crayon, modifie, commit. Le site se met à jour automatiquement en 1-2 minutes.
-- Ou en local : si tu modifies `app.py` / `data.py` (dans le zip `aanecc-site.zip`, la version Flask), relance `python3 freeze.py` pour régénérer le dossier `build/`, puis remplace les fichiers sur GitHub par ce nouveau contenu.
+## Technologies utilisées
+
+- HTML5
+- CSS3
+- JavaScript (vanilla)
+
+## Documents de l'association
+
+- [Statuts de l'AANECC](static/docs/aanecc-statuts.pdf)
+- [Règlement intérieur](static/docs/aanecc-reglement-interieur.pdf)
+
+## Auteur
+
+**Steve Kengne**
+GitHub : [@stevekengne373-byte](https://github.com/stevekengne373-byte)
+
+## Licence
+
+Ce projet est réalisé pour l'association AANECC. Tous droits réservés, sauf mention contraire.
